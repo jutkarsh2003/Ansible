@@ -1,0 +1,17 @@
+---
+- name: Install and Start the service
+  hosts: web-1
+  remote_user: devops
+  become: true
+
+  tasks:
+  - name: Installing nginx
+    dnf:
+      name: nginx
+      state: present
+
+  - name: start nginx service
+    service:
+      name: nginx
+      state: started
+      enabled: true
